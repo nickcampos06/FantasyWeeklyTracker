@@ -33,7 +33,9 @@ if team == "Away":
 # Every 60 seconds we check to see if the current matchup has changed (at the end of the week), and update the score
 while True:
     time.sleep(60)
-    # If a change is detected, we update the full list of matchups and find which one is the user's once again
+    # Force an update to the league
+    league.fetch_league()
+    # If a change in week is detected, we update the full list of matchups and find which one is the user's once again
     if current_week != league.current_week:
         current_matchup = league.box_scores()
         current_week = league.current_week
